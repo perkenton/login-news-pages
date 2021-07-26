@@ -1,0 +1,87 @@
+.login {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.input {
+  width: 300px;
+  min-height: 24px;
+  display: block;
+
+  font-size: 16px;
+  border: 1px solid var(--main-color);
+  border-radius: 8px;
+
+  padding: 12px;
+  margin-bottom: 12px;
+
+  &:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+  }
+}
+
+.input::-webkit-input-placeholder { opacity: 1; transition: .2s linear; }
+.input::-moz-placeholder { opacity: 1; transition: .2s linear; }
+.input:-moz-placeholder { opacity: 1; transition: .2s linear; }
+.input:-ms-input-placeholder { opacity: 1; transition: .2s linear; }
+
+.input:focus::-webkit-input-placeholder { opacity: 0; }
+.input:focus::-moz-placeholder { opacity: 0; }
+.input:focus:-moz-placeholder { opacity: 0; }
+.input:focus:-ms-input-placeholder { opacity: 0; }
+
+.inputWrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.passwordButton {
+  width: 20px;
+  height: 20px;
+  background-image: url('./images/eye.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  position: absolute;
+  border: none;
+  top: 15px;
+  right: 12px;
+  opacity: .6;
+  cursor: pointer;
+}
+
+.button {
+  display: block;
+  background-color: var(--main-color);
+  color: var(--system_white);
+
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+
+  padding: 12px 42px;
+  cursor: pointer;
+
+  transition: .2s linear;
+
+  &:hover {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  }
+  &:active {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+  }
+}
+
+.forgotPassword {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--main-color);
+  margin-left: 4px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--secondary-color);
+  }
+}
