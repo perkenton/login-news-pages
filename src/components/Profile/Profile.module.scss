@@ -1,0 +1,47 @@
+.profile {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+}
+
+.profilePicture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+}
+
+.aboutBlock {
+  max-width: 640px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.list {
+  list-style: none;
+  margin-top: 24px;
+  margin-left: 24px;
+  padding: 0;
+}
+
+.listItem {
+  margin-bottom: 10px;
+}
+
+.titleText {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.text {
+  font-size: 18px;
+  font-weight: 400;
+}
