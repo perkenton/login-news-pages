@@ -48,7 +48,7 @@ function Login() {
 
   return (
     <div className={ styles.login }>
-      <h1>Авторизация</h1>
+      <h1 className={ styles.title }>Авторизация</h1>
       <form name='loginForm'>
         <input
           type='text'
