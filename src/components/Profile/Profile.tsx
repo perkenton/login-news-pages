@@ -16,7 +16,6 @@ function Profile() {
           <li className={ styles.listItem }><span className={ styles.titleText } >Пароль: </span><span className={ styles.text } >12345</span></li>
           <li className={ styles.listItem }><span className={ styles.titleText } >Доступ: </span><span className={ styles.text } >смотреть профиль, править новости</span></li>
         </ul>
-
       </div>
     </div>
   );
