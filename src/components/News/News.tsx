@@ -11,7 +11,7 @@ function News() {
   const isAdmin: boolean = dataStorageMethods.getFromLocalStorage('isAccessAllowed') === 'true';
   const [ newsArr, setNewsArr ] = useState<NewsType[]>(news);
   const [ editedNews, setEditedNews ] = useState<NewsType>();
-  const [ newsId, setNewsId ] = useState<number>(0);
+  const [ newsId, setNewsId ] = useState<number>();
   const [ isModalOpened, setIsModalOpened ] = useState<boolean>(false);
 
 
