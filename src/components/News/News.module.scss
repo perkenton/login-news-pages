@@ -1,0 +1,84 @@
+.news {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.block {
+  max-width: 640px;
+}
+
+.newsCard {
+  max-width: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+  background-color: var(--system_white);
+  border-radius: 8px;
+  padding-top: 14px;
+  padding-right: 32px;
+  padding-bottom: 14px;
+  padding-left: 14px;
+  margin-bottom: 36px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+}
+
+.editSymbol {
+  width: 12px;
+  position: absolute;
+  bottom: 18px;
+  right: 10px;
+  cursor: pointer;
+  opacity: .6;
+  transition: .2s linear;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.newsTextWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 14px;
+}
+
+.newsImg {
+  max-width: 240px;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+}
+
+.newsTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.newsText {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.newsLink {
+  width: fit-content;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--main-color);
+  transition: .2s linear;
+
+  &:hover {
+    color: var(--secondary-color);
+    text-decoration: none;
+  }
+}
