@@ -7,12 +7,12 @@ function EditModal(props: {
   isModalOpened: boolean,
   setIsModalOpened: (value: boolean) => void,
   setEditedNews: (values: NewsType) => void,
-  newsId?: number
+  selectedNews: NewsType
 }) {
-  const [ title, setTitle ] = useState<string>();
-  const [ text, setText ] = useState<string>();
-  const [ image, setImage ] = useState<string>();
-  const [ source, setSource ] = useState<string>();
+  const [ title, setTitle ] = useState<string>(props.selectedNews.title);
+  const [ text, setText ] = useState<string>(props.selectedNews.text);
+  const [ image, setImage ] = useState<string>(props.selectedNews.image);
+  const [ source, setSource ] = useState<string>(props.selectedNews.source);
   const [ isError, setIsError ] = useState<boolean>(false);
 
 
@@ -21,7 +21,7 @@ function EditModal(props: {
 
     if(title && text && image && source) {
       props.setEditedNews({
-        id: props.newsId || 0,
+        id: props.selectedNews.id,
         title: title,
         text: text,
         image: image,
@@ -45,7 +45,7 @@ function EditModal(props: {
           className={ styles.input }
           autoComplete='off'
           required
-          defaultValue={ '' }
+          defaultValue={ title }
           onChange={ (e) => setTitle(e.target.value) }
         />
         <textarea
@@ -54,7 +54,7 @@ function EditModal(props: {
           placeholder='Текст'
           className={ styles.textArea }
           required
-          defaultValue={ '' }
+          defaultValue={ text }
           rows={ 3 }
           onChange={ (e) => setText(e.target.value) }
         />
@@ -67,7 +67,7 @@ function EditModal(props: {
           className={ styles.input }
           autoComplete='off'
           required
-          defaultValue={ '' }
+          defaultValue={ image }
           onChange={ (e) => setImage(e.target.value) }
         />
         <input
@@ -79,7 +79,7 @@ function EditModal(props: {
           className={ styles.input }
           autoComplete='off'
           required
-          defaultValue={ '' }
+          defaultValue={ source }
           onChange={ (e) => setSource(e.target.value) }
         />
         <p className={ styles.error }>{ isError ? 'Заполните все поля' : null }</p>

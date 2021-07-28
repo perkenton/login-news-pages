@@ -10,21 +10,21 @@ function News() {
   const dataStorageMethods: DataStorage = new DataStorageMethods();
   const isAdmin: boolean = dataStorageMethods.getFromLocalStorage('isAccessAllowed') === 'true';
   const [ newsArr, setNewsArr ] = useState<NewsType[]>(news);
+  const [ selectedNews, setSelectedNews ] = useState<NewsType>();
   const [ editedNews, setEditedNews ] = useState<NewsType>();
-  const [ newsId, setNewsId ] = useState<number>();
   const [ isModalOpened, setIsModalOpened ] = useState<boolean>(false);
 
 
-  const editNews = (id: number) => {
+  const editNews = (news: NewsType) => {
     if(isAdmin) {
-      setNewsId(id);
+      setSelectedNews(news);
       setIsModalOpened(true);
     }
   }
 
   useEffect(() => {
     if(editedNews) {
-      let copy: NewsType[] = Object.assign([], newsArr).filter((item: NewsType) => item.id !== newsId);
+      let copy: NewsType[] = Object.assign([], newsArr).filter((item: NewsType) => item.id !== editedNews.id);
       copy.push(editedNews);
       copy.sort((prev, next) => prev.id - next.id);
       setNewsArr(copy);
@@ -40,36 +40,37 @@ function News() {
 
         {
           newsArr.map((item: NewsType) => {
-          return (
-            <div key={ item.id } className={ styles.newsCard }>
-              <img src={ item.image } alt='Картинка новости' className={ styles.newsImg }/>
-              <div className={ styles.newsTextWrapper }>
-                <h2 className={ styles.newsTitle }>{ item.title }</h2>
-                <p className={ styles.newsText }>{ item.text }</p>
-                <a href={ item.source } className={ styles.newsLink } target='_blank' rel='noopener' >{ item.source }</a>
+            return (
+              <div key={ item.id } className={ styles.newsCard }>
+                <img src={ item.image } alt='Картинка новости' className={ styles.newsImg }/>
+                <div className={ styles.newsTextWrapper }>
+                  <h2 className={ styles.newsTitle }>{ item.title }</h2>
+                  <p className={ styles.newsText }>{ item.text }</p>
+                  <a href={ item.source } className={ styles.newsLink } target='_blank' rel='noopener' >{ item.source }</a>
+                </div>
+                {
+                  isAdmin ?
+                  <img
+                    src={ editSymbol }
+                    alt='Редактирование'
+                    title='Редактировать новость'
+                    className={ styles.editSymbol }
+                    onClick={ () => editNews(item) }
+                  />
+                  : null
+                }
               </div>
-              {
-                isAdmin ?
-                <img
-                  src={ editSymbol }
-                  alt='Редактирование'
-                  title='Редактировать новость'
-                  className={ styles.editSymbol }
-                  onClick={ () => editNews(item.id) }
-                />
-                : null
-              }
-            </div>
-          )})
+            )
+          })
         }
 
         {
-          isModalOpened &&
+          isModalOpened && selectedNews &&
           <EditModal
-            isModalOpened={isModalOpened}
-            setIsModalOpened={setIsModalOpened}
-            setEditedNews={setEditedNews}
-            newsId={newsId}
+            isModalOpened={ isModalOpened }
+            setIsModalOpened={ setIsModalOpened }
+            setEditedNews={ setEditedNews }
+            selectedNews={ selectedNews }
           />
         }
 
