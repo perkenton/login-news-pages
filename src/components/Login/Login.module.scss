@@ -52,9 +52,13 @@
   border: none;
   top: 15px;
   right: 12px;
-  opacity: .6;
+  opacity: .4;
   cursor: pointer;
+  transition: .2s linear;
 
+  &:hover {
+    opacity: 1;
+  }
   &:focus {
     outline: none;
   }
