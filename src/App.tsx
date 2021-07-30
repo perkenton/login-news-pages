@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import styles from './App.module.scss';
 
 import Header from './components/Header/Header';
@@ -16,29 +16,27 @@ function App() {
 
 
   return (
-    <HashRouter>
+    <BrowserRouter basename='/login-news-pages'>
       <div>
         <Header />
         <main className={ styles.main } >
-          <Switch>
-            <Route exact path='/' component={ Main } />
-            <Route path='/news' component={ News } />
-            <Route
-              path='/profile'
-              render={ () => (
-                dataStorageMethods.getFromLocalStorage('isAccessAllowed') === 'true' ? (
-                  <Redirect to='/profile' />
-                  ) : (
-                  <Redirect to='/login' />
-                  )
-                )}
-            />
-            <Route path='/login' component={ Login } />
-            <Route path='/profile' component={ Profile } />
-          </Switch>
+          <Route exact path='/' component={ Main } />
+          <Route path='/news' component={ News } />
+          <Route
+            path='/profile'
+            render={ () => (
+              dataStorageMethods.getFromLocalStorage('isAccessAllowed') === 'true' ? (
+                <Redirect to='/profile' />
+                ) : (
+                <Redirect to='/login' />
+                )
+              )}
+          />
+          <Route path='/login' component={ Login } />
+          <Route path='/profile' component={ Profile } />
         </main>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
