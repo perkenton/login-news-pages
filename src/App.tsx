@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Route, Redirect } from 'react-router-dom';
 import styles from './App.module.scss';
 
 import Header from './components/Header/Header';
@@ -16,7 +16,7 @@ function App() {
 
 
   return (
-    <BrowserRouter basename='/login-news-pages'>
+    <HashRouter>
       <div>
         <Header />
         <main className={ styles.main } >
@@ -36,7 +36,7 @@ function App() {
           <Route path='/profile' component={ Profile } />
         </main>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
