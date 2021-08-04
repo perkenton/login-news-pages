@@ -1,4 +1,4 @@
-export type NewsType = {
+export type NewsData = {
   id: number,
   title: string,
   text: string,
@@ -6,7 +6,7 @@ export type NewsType = {
   source: string,
 }
 
-export const news: NewsType[] = [
+export const newsData: NewsData[] = [
   {
     id: 1,
     title: 'В Китае нашли останки гигантского носорога массой в шесть слонов',
