@@ -1,36 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styles from './News.module.scss';
 import EditModal from './EditModal/EditModal';
-import { news, NewsType } from '../../data/news';
+import { NewsData } from '../../data/news';
 import { DataStorageMethods, DataStorage } from '../../utils/DataStorage';
 import editSymbol from './images/edit.svg';
 
 
 function News() {
+  const news = useSelector((store: any) => store.news.news);
   const dataStorageMethods: DataStorage = new DataStorageMethods();
   const isAdmin: boolean = dataStorageMethods.getFromLocalStorage('isAccessAllowed') === 'true';
-  const [ newsArr, setNewsArr ] = useState<NewsType[]>(news);
-  const [ selectedNews, setSelectedNews ] = useState<NewsType>();
-  const [ editedNews, setEditedNews ] = useState<NewsType>();
+  const [ selectedNews, setSelectedNews ] = useState<NewsData>();
   const [ isModalOpened, setIsModalOpened ] = useState<boolean>(false);
 
 
-  const editNews = (news: NewsType) => {
+  const editNews = (news: NewsData) => {
     if(isAdmin) {
       setSelectedNews(news);
       setIsModalOpened(true);
     }
   }
-
-  useEffect(() => {
-    if(editedNews) {
-      let copy: NewsType[] = Object.assign([], newsArr).filter((item: NewsType) => item.id !== editedNews.id);
-      copy.push(editedNews);
-      copy.sort((prev, next) => prev.id - next.id);
-      setNewsArr(copy);
-      setIsModalOpened(false);
-    }
-  }, [editedNews])
 
 
   return (
@@ -39,7 +29,7 @@ function News() {
       <div className={ styles.block }>
 
         {
-          newsArr.map((item: NewsType) => {
+          news.map((item: NewsData) => {
             return (
               <div key={ item.id } className={ styles.newsCard }>
                 <img src={ item.image } alt='Картинка новости' className={ styles.newsImg }/>
