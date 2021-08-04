@@ -59,7 +59,6 @@ function News() {
           <EditModal
             isModalOpened={ isModalOpened }
             setIsModalOpened={ setIsModalOpened }
-            setEditedNews={ setEditedNews }
             selectedNews={ selectedNews }
           />
         }

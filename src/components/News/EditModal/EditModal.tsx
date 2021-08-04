@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './EditModal.module.scss';
-import { NewsType } from '../../../data/news';
+import { editNews } from '../../../store/action/news';
+import { NewsData } from '../../../data/news';
 
 
 function EditModal(props: {
   isModalOpened: boolean,
   setIsModalOpened: (value: boolean) => void,
-  setEditedNews: (values: NewsType) => void,
-  selectedNews: NewsType
+  selectedNews: NewsData
 }) {
-  const [ title, setTitle ] = useState<string>(props.selectedNews.title);
-  const [ text, setText ] = useState<string>(props.selectedNews.text);
-  const [ image, setImage ] = useState<string>(props.selectedNews.image);
-  const [ source, setSource ] = useState<string>(props.selectedNews.source);
+  const dispatch = useDispatch();
+  const [ formData, setFormData ] = useState<NewsData>(props.selectedNews);
   const [ isError, setIsError ] = useState<boolean>(false);
 
 
   const submit = (e: any) => {
     e.preventDefault();
+    // Простая валидация на пустую строку и только пробелы
+    const isFormValid = !Object.values(formData).some(item => item.toString().trim() === '');
 
-    if(title && text && image && source) {
-      props.setEditedNews({
-        id: props.selectedNews.id,
-        title: title,
-        text: text,
-        image: image,
-        source: source
-      })
+    if(isFormValid) {
+      dispatch(editNews(formData));
+      props.setIsModalOpened(false)
     } else {
       setIsError(true)
     }
@@ -45,8 +41,8 @@ function EditModal(props: {
           className={ styles.input }
           autoComplete='off'
           required
-          defaultValue={ title }
-          onChange={ (e) => setTitle(e.target.value) }
+          defaultValue={ formData.title }
+          onChange={ (e) => setFormData({...formData, title: e.target.value}) }
         />
         <textarea
           name='text'
@@ -54,9 +50,9 @@ function EditModal(props: {
           placeholder='Текст'
           className={ styles.textArea }
           required
-          defaultValue={ text }
+          defaultValue={ formData.text }
           rows={ 3 }
-          onChange={ (e) => setText(e.target.value) }
+          onChange={ (e) => setFormData({...formData, text: e.target.value}) }
         />
         <input
           type='text'
@@ -67,8 +63,8 @@ function EditModal(props: {
           className={ styles.input }
           autoComplete='off'
           required
-          defaultValue={ image }
-          onChange={ (e) => setImage(e.target.value) }
+          defaultValue={ formData.image }
+          onChange={ (e) => setFormData({...formData, image: e.target.value}) }
         />
         <input
           type='text'
@@ -79,8 +75,8 @@ function EditModal(props: {
           className={ styles.input }
           autoComplete='off'
           required
-          defaultValue={ source }
-          onChange={ (e) => setSource(e.target.value) }
+          defaultValue={ formData.source }
+          onChange={ (e) => setFormData({...formData, source: e.target.value}) }
         />
         <p className={ styles.error }>{ isError ? 'Заполните все поля' : null }</p>
         <input
