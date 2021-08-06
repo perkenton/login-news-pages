@@ -6,7 +6,7 @@ import profilePic from '../../data/images/profile-picture.jpg';
 function Profile() {
   return (
     <div className={ styles.profile }>
-      <h1 className={ styles.title }>Профиль</h1>
+      <h1 className='mainTitle'>Профиль</h1>
       <div className={ styles.aboutBlock }>
         <picture>
           <img src={ profilePic } alt='Фото профиля' className={ styles.profilePicture } />

@@ -48,14 +48,14 @@ function Login() {
 
   return (
     <div className={ styles.login }>
-      <h1 className={ styles.title }>Авторизация</h1>
-      <form name='loginForm'>
+      <h1 className='mainTitle'>Авторизация</h1>
+      <form name='loginForm' className={ styles.form }>
         <input
           type='text'
           name='login'
           id='login'
           placeholder='Логин'
-          className={ styles.input }
+          className='basicInput'
           autoComplete='off'
           spellCheck={ false }
           onChange={ (e) => setLogin(e.target.value) }
@@ -66,7 +66,7 @@ function Login() {
             name='password'
             id='password'
             placeholder='Пароль'
-            className={ styles.input }
+            className='basicInput'
             autoComplete='off'
             spellCheck={ false }
             onChange={ (e) => setPassword(e.target.value) }
@@ -75,7 +75,7 @@ function Login() {
         </span>
         <input
           type='submit'
-          className={ styles.button }
+          className='basicButton'
           onClick={ submit }
           value='Войти'
         />

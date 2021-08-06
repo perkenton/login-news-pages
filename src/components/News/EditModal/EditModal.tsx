@@ -38,7 +38,7 @@ function EditModal(props: {
           name='title'
           id='title'
           placeholder='Заголовок'
-          className={ styles.input }
+          className='basicInput'
           autoComplete='off'
           required
           defaultValue={ formData.title }
@@ -60,7 +60,7 @@ function EditModal(props: {
           id='image'
           placeholder='Ссылка на изображение'
           pattern='^https?:\/\/(((www[.])+(?:.png|.jpg|.jpeg|.gif)))$'
-          className={ styles.input }
+          className='basicInput'
           autoComplete='off'
           required
           defaultValue={ formData.image }
@@ -72,7 +72,7 @@ function EditModal(props: {
           id='source'
           placeholder='Источник'
           pattern='^https?:\/\/(((www[.])?([A-Za-z0-9-]+([.][A-Za-z]+)+)([:](([1-5][0-9]{0,4})|(6[0-4][0-9]{3})|(65[0-4][0-9]{2})|(655[0-2][0-9]|6553[0-5])|([1-9][0-9]{0,3})))?)|((25[0-5]|2[0-4]\d|1\d|[1-9]\d{0,2})([.](25[0-5]|2[0-4]\d|[1-9]\d{0,2})){3}[:](([1-5][0-9]{0,4})|(6[0-4][0-9]{3})|(65[0-4][0-9]{2})|(655[0-2][0-9]|6553[0-5])|([1-9][0-9]{0,3}))))(\/[A-Za-z0-9,-]+){0,}([#,\/])?$'
-          className={ styles.input }
+          className='basicInput'
           autoComplete='off'
           required
           defaultValue={ formData.source }
@@ -81,7 +81,8 @@ function EditModal(props: {
         <p className={ styles.error }>{ isError ? 'Заполните все поля' : null }</p>
         <input
           type='submit'
-          className={ styles.button }
+          className='basicButton'
+          style={{ marginTop: '24px' }}
           onClick={ submit }
           value='Сохранить'
         />

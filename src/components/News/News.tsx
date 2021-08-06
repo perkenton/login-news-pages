@@ -25,7 +25,7 @@ function News() {
 
   return (
     <div className={ styles.news }>
-      <h1 className={ styles.title }>Новости</h1>
+      <h1 className='mainTitle'>Новости</h1>
       <div className={ styles.block }>
 
         {
