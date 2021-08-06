@@ -71,7 +71,7 @@ function Login() {
             spellCheck={ false }
             onChange={ (e) => setPassword(e.target.value) }
           />
-          <button type='button' className={ styles.passwordButton } onClick={ () => showPassword() } title='Показать/скрыть пароль' />
+          <button type='button' className={ styles.showPasswordButton } onClick={ () => showPassword() } title='Показать/скрыть пароль' />
         </span>
         <input
           type='submit'
