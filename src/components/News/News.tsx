@@ -36,7 +36,7 @@ function News() {
                 <div className={ styles.newsTextWrapper }>
                   <h2 className={ styles.newsTitle }>{ item.title }</h2>
                   <p className={ styles.newsText }>{ item.text }</p>
-                  <a href={ item.source } className={ styles.newsLink } target='_blank' rel='noopener' >{ item.source }</a>
+                  <a href={ item.source } className={ styles.newsLink } title={ item.source } target='_blank' rel='noopener' >{ item.source }</a>
                 </div>
                 {
                   isAdmin ?

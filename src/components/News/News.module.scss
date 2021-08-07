@@ -87,12 +87,15 @@
 
 .newsLink {
   width: fit-content;
+  max-width: 340px;
   font-family: var(--basic-font);
   font-size: 14px;
   line-height: 20px;
   font-style: normal;
   font-weight: 400;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: var(--main-color);
   transition: .2s linear;
 
