@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './News.module.scss';
-import EditModal from './EditModal/EditModal';
+import EditNewsModal from './EditNewsModal/EditNewsModal';
 import { NewsData } from '../../data/news';
 import { DataStorageMethods, DataStorage } from '../../utils/DataStorage';
 import editSymbol from './images/edit.svg';
@@ -56,7 +56,7 @@ function News() {
 
         {
           isModalOpened && selectedNews &&
-          <EditModal
+          <EditNewsModal
             isModalOpened={ isModalOpened }
             setIsModalOpened={ setIsModalOpened }
             selectedNews={ selectedNews }
