@@ -46,3 +46,9 @@
     color: var(--secondary-color);
   }
 }
+
+@media (max-width: 420px) {
+  .form {
+    width: 280px;
+  }
+}
