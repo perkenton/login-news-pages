@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import styles from './Login.module.scss';
 import Modal from './Modal/Modal';
 import { DataStorageMethods, DataStorage } from '../../utils/DataStorage';
+import { ProfilesData } from '../../data/profiles';
 
 
 enum InputType {
@@ -13,6 +15,7 @@ enum InputType {
 function Login() {
   const history = useHistory();
   const dataStorageMethods: DataStorage = new DataStorageMethods();
+  const profiles = useSelector((store: any) => store.profiles.profiles);
 
   const [ login, setLogin ] = useState<string>('');
   const [ password, setPassword ] = useState<string>('');
@@ -23,7 +26,7 @@ function Login() {
 
   const submit = (e: any) => {
     e.preventDefault();
-    if(login === 'Admin' && password === '12345') {
+    if(profiles.some((item: ProfilesData) => item.login === login && item.password === password)) {
       dataStorageMethods.setToLocalStorage('isAccessAllowed', 'true');
       history.push('/profile');
     } else {
