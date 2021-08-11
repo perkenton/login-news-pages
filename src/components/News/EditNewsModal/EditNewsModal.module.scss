@@ -68,6 +68,8 @@
 @media (max-width: 520px) {
   .editNewsModal {
     width: 280px;
+    height: 460px;
+    overflow: scroll;
     box-shadow: 0 0 54px rgba(0, 0, 0, .8);
   }
 
