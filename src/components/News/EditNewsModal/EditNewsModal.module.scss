@@ -64,3 +64,14 @@
   line-height: 20px;
   color: var(--error-color);
 }
+
+@media (max-width: 420px) {
+  .editNewsModal {
+    width: 280px;
+    box-shadow: 0 0 54px rgba(0, 0, 0, .8);
+  }
+
+  .textArea {
+    min-height: 170px;
+  }
+}
