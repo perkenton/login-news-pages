@@ -49,3 +49,12 @@
 .menuListLinkActive {
   color: var(--link-color-active);
 }
+
+@media (max-width: 280px) {
+  .menuListItem {
+    display: block;
+    margin-top: 12px;
+    margin-right: 0;
+    margin-bottom: 12px
+  }
+}
