@@ -15,7 +15,7 @@ function Profile() {
       {
         profiles.map((item: ProfilesData) => {
           return (
-            <div className={ styles.aboutBlock }>
+            <div key={ item.id } className={ styles.aboutBlock }>
               <picture>
                 <img src={ item.avatar } alt='Фото профиля' className={ styles.profilePicture }/>
               </picture>
