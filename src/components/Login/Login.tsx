@@ -31,7 +31,7 @@ function Login() {
       history.push('/profile');
     } else {
       dataStorageMethods.setToLocalStorage('isAccessAllowed', 'false');
-      openModal('Имя пользователя или пароль введены неверно.');
+      openModal('Логин или пароль введены неверно.');
     }
   }
 
