@@ -19,7 +19,7 @@ function App() {
     <HashRouter>
       <div>
         <Header />
-        <main className={ styles.main } >
+        <main className={ styles.generalMainBlock } >
           <Route exact path='/' component={ Main } />
           <Route path='/news' component={ News } />
           <Route
