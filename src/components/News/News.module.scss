@@ -12,6 +12,7 @@
   position: relative;
   display: flex;
   flex-direction: row;
+  box-sizing: border-box;
 
   background-color: var(--system_white);
   border-radius: 8px;
@@ -102,5 +103,25 @@
   &:hover {
     color: var(--secondary-color);
     text-decoration: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .newsCard {
+    max-width: 300px;
+    flex-direction: column;
+
+    padding-right: 14px;
+    margin-bottom: 36px;
+  }
+
+  .newsImg {
+    max-width: none;
+    width: 100%;
+    margin-bottom: 14px;
+  }
+
+  .newsTextWrapper {
+    margin-left: 0;
   }
 }
